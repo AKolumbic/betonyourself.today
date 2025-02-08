@@ -21,26 +21,7 @@ cd betonyourself-website
 2️⃣ Install dependencies
 
 npm install
-
-# or
-
-yarn install
-
-# or
-
-pnpm install
-
-3️⃣ Run the development server
-
 npm run dev
-
-# or
-
-yarn dev
-
-# or
-
-pnpm dev
 
 4️⃣ Open in your browser
 
