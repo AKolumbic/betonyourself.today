@@ -49,4 +49,3 @@ Check out the Next.js deployment guide for more options.
 Made by Andrew Kolumbic
 📧 Email: andrewkolumbic@gmail.com
 🔗 LinkedIn: linkedin.com/in/andrew-kolumbic
-🐙 GitHub: github.com/AKolumbic
