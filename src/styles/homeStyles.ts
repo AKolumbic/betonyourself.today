@@ -6,6 +6,10 @@ export const containerStyle: CSSProperties = {
   width: "100%",
   minHeight: "100vh",
   overflow: "hidden",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
 };
 
 // Video Background
@@ -32,49 +36,53 @@ export const overlayStyle: CSSProperties = {
   zIndex: 1,
 };
 
-// Text Container
+// Text Container - FIXED FOR MOBILE
 export const textContainerStyle: CSSProperties = {
-  position: "absolute",
-  top: "10%", // Keeps the element 10% from the top
-  left: "50%", // Centers it horizontally
-  transform: "translateX(-50%)", // Correct horizontal centering
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   textAlign: "center",
-  width: "80%",
+  width: "90%",
   maxWidth: "700px",
+  padding: "1rem",
   zIndex: 2,
 };
 
-// Heading
+// Heading - FIXED FOR MOBILE
 export const headingStyle: CSSProperties = {
-  fontSize: "clamp(3rem, 8vw, 6rem)",
+  fontSize: "clamp(2.5rem, 6vw, 5rem)", // Adjusted for smaller screens
   margin: 0,
   fontWeight: 700,
   color: "#FFFFFF",
+  fontFamily: "'Racing Sans One', sans-serif",
   textShadow: `
     0px 0px 10px rgba(255, 215, 0, 0.5),  
     0px 0px 20px rgba(255, 215, 0, 0.3)
   `,
 };
 
-// Subheading
+// Subheading - FIXED FOR MOBILE
 export const subHeadingStyle: CSSProperties = {
-  fontSize: "clamp(1.5rem, 4vw, 2rem)",
-  marginTop: "1.25rem",
+  fontSize: "clamp(1.2rem, 4vw, 2rem)", // Adjusted for readability
+  marginTop: "1rem",
   fontWeight: 300,
   color: "#FFFFFF",
+  fontFamily: "'Nothing You Could Do', cursive",
   textShadow: "0px 0px 8px rgba(255, 215, 0, 0.3)",
 };
 
-// Button
+// Button - FIXED FOR MOBILE
 export const buttonStyle: CSSProperties = {
   marginTop: "1.5rem",
   padding: "1rem 2rem",
   borderRadius: "8px",
-  background: "#FFD700",
+  background: "rgba(255, 215, 0, 0.9)", // Ensuring opacity
   color: "#000",
-  fontSize: "1.2rem",
+  fontSize: "clamp(1rem, 4vw, 1.2rem)", // Adjusted for small screens
   fontWeight: "bold",
-  border: "none",
+  fontFamily: "'Racing Sans One', sans-serif",
+  border: "2px solid #FFD700",
   cursor: "pointer",
   transition: "transform 0.3s ease-out, box-shadow 0.3s ease-out",
 };

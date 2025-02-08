@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect } from "react";
 import {
   containerStyle,
   videoWrapperStyle,
@@ -15,22 +14,7 @@ import { useParallaxMotion } from "@/utils/motionUtils";
 
 export default function Home() {
   // Use Parallax Hook
-  const { mouseX, mouseY, translateX, translateY, blurAmount } =
-    useParallaxMotion();
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth) * 2 - 1;
-      const y = (e.clientY / innerHeight) * 2 - 1;
-
-      mouseX.set(x);
-      mouseY.set(y);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  const { translateX, translateY, blurAmount } = useParallaxMotion();
 
   return (
     <main className="font-racing" style={containerStyle}>
@@ -54,13 +38,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        style={{
-          ...textContainerStyle,
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "center",
-        }}
+        style={textContainerStyle}
       >
         {/* Main Heading (Racing Sans One) */}
         <motion.h1
