@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Footer from "@/components/Footer"; // Import Footer
 import {
   containerStyle,
   videoWrapperStyle,
@@ -13,7 +14,6 @@ import {
 import { useParallaxMotion } from "@/utils/motionUtils";
 
 export default function Home() {
-  // Use Parallax Hook
   const { translateX, translateY, blurAmount } = useParallaxMotion();
 
   return (
@@ -40,7 +40,6 @@ export default function Home() {
         transition={{ duration: 1.2, ease: "easeOut" }}
         style={textContainerStyle}
       >
-        {/* Main Heading (Racing Sans One) */}
         <motion.h1
           style={{
             ...headingStyle,
@@ -52,7 +51,6 @@ export default function Home() {
           Bet on Yourself!
         </motion.h1>
 
-        {/* Subheading (Nothing You Could Do - Handwritten) */}
         <motion.p
           className="font-handwritten"
           style={{
@@ -65,6 +63,9 @@ export default function Home() {
           Coming soon to iOS & Android
         </motion.p>
       </motion.div>
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }
