@@ -1,6 +1,6 @@
-"use client"; // Ensure this runs only on the client side
+"use client"; // Ensure this is a client component
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FaLinkedin,
   FaGithub,
@@ -15,14 +15,11 @@ import {
   IconContainer,
   IconLink,
   Copyright,
+  NameLink,
 } from "../styles/footerStyles";
 
 export default function Footer() {
-  const [year, setYear] = useState("");
-
-  useEffect(() => {
-    setYear(new Date().getFullYear().toString()); // Ensure correct rendering on client
-  }, []);
+  const year = new Date().getFullYear(); // Get the year directly, no state required
 
   return (
     <FooterContainer>
@@ -85,7 +82,14 @@ export default function Footer() {
         </IconLink>
       </IconContainer>
 
-      <Copyright>© {year} Andrew Kolumbic. All rights reserved.</Copyright>
+      {/* Updated Copyright with Clickable Name */}
+      <Copyright>
+        © {year}{" "}
+        <NameLink href="https://andrewkolumbic.com" target="_blank">
+          Andrew Kolumbic
+        </NameLink>
+        . All rights reserved.
+      </Copyright>
     </FooterContainer>
   );
 }

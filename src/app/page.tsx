@@ -17,7 +17,10 @@ export default function Home() {
   const { translateX, translateY, blurAmount } = useParallaxMotion();
 
   return (
-    <main className="font-racing" style={containerStyle}>
+    <main
+      className="font-racing"
+      style={{ ...containerStyle, paddingBottom: "120px" }}
+    >
       {/* Background Video */}
       <motion.div style={videoWrapperStyle}>
         <video

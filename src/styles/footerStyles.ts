@@ -1,8 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+// Define the shine animation
+const shine = keyframes`
+  0% {
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
+  }
+`;
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  background: rgba(0, 0, 0, 0.85); /* Dark semi-transparent background */
+  background: rgba(0, 0, 0, 0.85);
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
@@ -20,7 +33,7 @@ export const IconContainer = styled.div`
   gap: 1rem;
   justify-content: center;
   margin-bottom: 0.5rem;
-  flex-wrap: wrap; /* Ensures icons don’t break layout */
+  flex-wrap: wrap;
 `;
 
 export const IconLink = styled.a`
@@ -29,7 +42,7 @@ export const IconLink = styled.a`
   transition: color 0.3s ease, transform 0.2s ease-in-out;
 
   &:hover {
-    color: #ffd700;
+    color: #ffffff;
     transform: scale(1.15);
   }
 `;
@@ -42,4 +55,21 @@ export const Copyright = styled.p`
   font-family: "Raleway", sans-serif;
   margin-top: 0.5rem;
   text-align: center;
+`;
+
+// ✨ Fix Animation Hydration Issue: Only animate on the client
+export const NameLink = styled.a`
+  color: #ffffff;
+  font-weight: 400;
+  text-decoration: none;
+  transition: text-shadow 0.3s ease-in-out;
+
+  &:hover {
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+  }
+
+  /* Only animate the shine effect after hydration */
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${shine} 3s infinite ease-in-out;
+  }
 `;
