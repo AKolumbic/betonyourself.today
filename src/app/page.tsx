@@ -1,69 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import {
+  containerStyle,
+  videoWrapperStyle,
+  overlayStyle,
+  textContainerStyle,
+  headingStyle,
+  subHeadingStyle,
+} from "@/styles/homeStyles";
+
+import { useParallaxMotion } from "@/utils/motionUtils";
 
 export default function Home() {
+  // Use Parallax Hook
+  const { mouseX, mouseY, translateX, translateY, blurAmount } =
+    useParallaxMotion();
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth) * 2 - 1;
+      const y = (e.clientY / innerHeight) * 2 - 1;
+
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
   return (
-    <main style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
+    <main className="font-racing" style={containerStyle}>
       {/* Background Video */}
-      <video
-        src="/home_loop.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: 0,
-        }}
-      />
+      <motion.div style={videoWrapperStyle}>
+        <video
+          src="/home_loop.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </motion.div>
 
       {/* Gradient Overlay */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5))",
-          zIndex: 1,
-          pointerEvents: "none",
-        }}
-      />
+      <div style={overlayStyle} />
 
-      {/* Animated Card */}
+      {/* Centered Text Section */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         style={{
-          position: "absolute",
-          top: "50%",
+          ...textContainerStyle,
           left: "50%",
+          top: "50%",
           transform: "translate(-50%, -50%)",
-          width: "min(90%, 400px)",
-          padding: "1.5rem",
-          borderRadius: "8px",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
-          zIndex: 2,
+          textAlign: "center",
         }}
       >
-        <h1 style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-          Bet on Yourself
-        </h1>
-        <p style={{ marginBottom: "0.5rem" }}>
-          Turn your goals into commitments.
-        </p>
-        <p>
-          Double your money if you succeed. Coming soon on iOS &amp; Android.
-        </p>
+        {/* Main Heading (Racing Sans One) */}
+        <motion.h1
+          style={{
+            ...headingStyle,
+            x: translateX,
+            y: translateY,
+            filter: blurAmount,
+          }}
+        >
+          Bet on Yourself!
+        </motion.h1>
+
+        {/* Subheading (Nothing You Could Do - Handwritten) */}
+        <motion.p
+          className="font-handwritten"
+          style={{
+            ...subHeadingStyle,
+            x: translateX,
+            y: translateY,
+            filter: blurAmount,
+          }}
+        >
+          Coming soon to iOS & Android
+        </motion.p>
       </motion.div>
     </main>
   );

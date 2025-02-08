@@ -15,6 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Nothing+You+Could+Do&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body style={{ margin: 0, padding: 0 }}>{children}</body>
     </html>
   );
