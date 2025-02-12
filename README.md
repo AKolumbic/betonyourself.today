@@ -27,18 +27,6 @@ npm run dev
 
 Go to http://localhost:3000 to view the app.
 
-🎨 Features
-
-✔️ Full-screen looping video background
-✔️ Responsive typography and layout
-✔️ Smooth animations using Framer Motion
-✔️ Styled Components for modular styles
-✔️ Dark-themed footer with animated social icons
-
-🚀 Deployment
-
-The easiest way to deploy is via Vercel:
-
 npm run build
 vercel deploy
 
